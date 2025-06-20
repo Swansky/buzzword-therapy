@@ -89,8 +89,8 @@ export const Layout = ({children}: { children: React.ReactNode }) => (
             >
                 Swansky
             </a>{" "}
-            · Ironically powered by AI (thanks ChatGPT ✨)
-            <p>Source code available on <a href="https://swansky.fr"
+            · Ironically powered by AI ·
+            <p>Source code available on <a href="https://github.com/Swansky/buzzword-therapy"
                                            target="_blank"
                                            rel="noopener noreferrer"
                                            className="underline">GitHub</a></p>
