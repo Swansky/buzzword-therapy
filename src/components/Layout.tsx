@@ -89,7 +89,7 @@ export const Layout = ({children}: { children: React.ReactNode }) => (
             >
                 Swansky
             </a>{" "}
-            · Ironically powered by AI ·
+            · Ironically powered by AI
             <p>Source code available on <a href="https://github.com/Swansky/buzzword-therapy"
                                            target="_blank"
                                            rel="noopener noreferrer"
