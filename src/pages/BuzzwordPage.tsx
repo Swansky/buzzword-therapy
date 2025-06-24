@@ -7,6 +7,10 @@ interface BuzzwordEntry {
     description: string;
 }
 
+const shuffleArray = <T,>(array: T[]): T[] => {
+    return [...array].sort(() => Math.random() - 0.5);
+};
+
 export const BuzzwordPage = ({category}: { category: string }) => {
     const [buzzwords, setBuzzwords] = useState<BuzzwordEntry[]>([]);
     const [index, setIndex] = useState(0);
@@ -19,7 +23,8 @@ export const BuzzwordPage = ({category}: { category: string }) => {
                     header: true,
                     skipEmptyLines: true,
                     complete: (result) => {
-                        setBuzzwords(result.data);
+                        const shuffled = shuffleArray(result.data);
+                        setBuzzwords(shuffled);
                         setIndex(0);
                     },
                 });
@@ -27,14 +32,9 @@ export const BuzzwordPage = ({category}: { category: string }) => {
     }, [category]);
 
     const nextWord = () => {
-        if (buzzwords.length > 0) {
-            let newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * buzzwords.length);
-            } while (newIndex === index && buzzwords.length > 1);
-            setIndex(newIndex);
-        }
+        setIndex((prev) => (prev + 1) % buzzwords.length);
     };
+
 
     const current = buzzwords[index];
 
